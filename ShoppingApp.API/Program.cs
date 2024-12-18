@@ -1,5 +1,4 @@
-using Microsoft.EntityFrameworkCore;
-using ShoppingApp.Core.DB;
+using ShoppingApp.API;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,10 +9,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new Exception("Not found connection string");
+//var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new Exception("Not found connection string");
 
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-options.UseSqlServer(connectionString));
+//builder.Services.AddDbContext<ApplicationDbContext>(options =>
+//options.UseSqlServer(connectionString));
+
+//Service Collection
+builder.Services.AddCoreServices(builder.Configuration);
+
+// DbContext
+builder.Services.AddApplicationDb(builder.Configuration);
 
 var app = builder.Build();
 

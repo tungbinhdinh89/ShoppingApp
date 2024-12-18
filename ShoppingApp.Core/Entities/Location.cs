@@ -9,6 +9,6 @@ namespace ShoppingApp.Core.Entities
         [MaxLength(255), Required]
         public string Name { get; set; } = string.Empty;
 
-        public ICollection<ProductLocation> ProductLocations { get; set; } = [];
+        public ICollection<ProductLocation> ProductLocations { get; set; } = new HashSet<ProductLocation>();
     }
 }

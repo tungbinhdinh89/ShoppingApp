@@ -10,13 +10,13 @@ namespace ShoppingApp.Core.DB
         {
             builder.HasKey(x => new { x.ProductId, x.ShippingMethodId });
 
-            builder.HasOne(p => p.Product)
-                   .WithMany(x => x.ProductShippingMethods)
-                   .HasForeignKey(p => p.ProductId);
+            builder.HasOne(po => po.Product)
+                 .WithMany(p => p.ProductShippingMethods)
+                 .HasForeignKey(po => po.ProductId);
 
-            builder.HasOne(l => l.ShippingMethod)
-                   .WithMany(x => x.ProductShippingMethods)
-                   .HasForeignKey(l => l.ShippingMethodId);
+            builder.HasOne(po => po.ShippingMethod)
+                   .WithMany(o => o.ProductShippingMethods)
+                   .HasForeignKey(po => po.ShippingMethodId);
         }
     }
 }

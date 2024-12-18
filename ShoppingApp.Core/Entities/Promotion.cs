@@ -11,6 +11,6 @@ namespace ShoppingApp.Core.Entities
         [MaxLength(1000)]
         public string Description { get; set; } = string.Empty;
 
-        public ICollection<ProductPromotion> ProductPromotions { get; set; } = [];
+        public ICollection<ProductPromotion> ProductPromotions { get; set; } = new HashSet<ProductPromotion>();
     }
 }
